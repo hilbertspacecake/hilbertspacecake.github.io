@@ -1,0 +1,213 @@
+:root {
+  --background: #fff;
+  --background-navbar: #dbedff;
+  --background-even-row: #dbedff55;
+  --background-odd-row: #ffdfb555;
+  --background-even-row-highlight: #dbedffcc;
+  --background-odd-row-highlight: #ffdfb5cc;
+  --background-hover: #00000013;
+  --table-border: #22222230;
+  --table-border-strong: #22222270;
+  --text-black: #000;
+  --text: #1b1b1b;
+  --text-visited: #551a8b;
+  --text-link: #0069c2;
+  --navbar-border: #a6a6a6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1b1b1b;
+    --background-navbar: #000;
+    --background-even-row: #6ab4ff54;
+    --background-odd-row: #000;
+    --background-even-row-highlight: #6ab4ffee;
+    --background-odd-row-highlight: #ffffffeb;
+    --background-hover: #ffffff66;
+    --table-border: #ffffff60;
+    --table-border-strong: #ffffffe0;
+    --text: #fff;
+    --text-visited: #ffadff;
+    --text-link: #8cb4ff;
+  }
+}
+
+html {
+  font-family: "Georgia", "Times", serif;
+  font-size: 18px;
+  color: var(--text);
+}
+
+body {
+  background-color: var(--background);
+  min-width: 1000px;
+}
+
+a:not(.button) {
+  color: var(--text-link);
+}
+
+a:not(.button):visited {
+  color: var(--text-visited);
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+td,
+th {
+  border: 1px solid var(--table-border);
+  max-width: 100%;
+  white-space: nowrap;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+th {
+  background: var(--background);
+}
+
+td.square,
+th.square,
+td.chord,
+th.chord {
+  text-align: center;
+  padding: 0;
+}
+
+td.square,
+th.square {
+  min-width: 1.8rem;
+  min-height: 1.8rem;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+td.button {
+  font-size: 1.5em;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+td.button:hover {
+  background: #00000030;
+}
+
+td.chord,
+th.chord {
+  width: 3rem;
+  min-width: 3rem;
+}
+
+th,
+td.title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+tr td.column-group-end,
+tr th.column-group-end {
+  border-right: 2px solid var(--table-border-strong);
+}
+
+tr.row:nth-child(even) {
+  background: var(--background-even-row);
+}
+
+tr.row:nth-child(odd) {
+  background: var(--background-odd-row);
+}
+
+tr.row:nth-child(even) td.on {
+  background: var(--background-even-row-highlight);
+}
+
+tr.row:nth-child(odd) td.on {
+  background: var(--background-odd-row-highlight);
+}
+
+tr.row td.on {
+  color: var(--text-black);
+}
+
+tr.row:hover {
+  background: var(--background-hover);
+}
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.sticky-under {
+  position: sticky;
+  top: 71px;
+  z-index: 1;
+}
+
+.navbar {
+  background: var(--background-navbar);
+  border: solid 1px var(--navbar-border);
+  display: grid;
+  max-width: 100%;
+  padding: 0.5em;
+  column-gap: 1em;
+  grid-template-columns: repeat(6, min-content);
+  grid-template-areas:
+    "tonic-lbl octave-lbl instrument-lbl volume-lbl volume-sel chord-voicing-lbl"
+    "tonic-sel octave-sel instrument-sel tempo-lbl  tempo-sel  chord-voicing-sel";
+}
+
+.navbar select {
+  font-size: 1em;
+}
+
+.navbar label[for="select-tonic"] {
+  grid-area: tonic-lbl;
+}
+.navbar select#select-tonic {
+  grid-area: tonic-sel;
+}
+
+.navbar label[for="select-octave"] {
+  grid-area: octave-lbl;
+}
+.navbar select#select-octave {
+  grid-area: octave-sel;
+}
+
+.navbar label[for="select-instrument"] {
+  grid-area: instrument-lbl;
+}
+.navbar select#select-instrument {
+  grid-area: instrument-sel;
+}
+
+.navbar label[for="tempo-input"] {
+  grid-area: tempo-lbl;
+}
+.navbar input#tempo-input {
+  grid-area: tempo-sel;
+}
+
+.navbar label[for="volume-input"] {
+  grid-area: volume-lbl;
+}
+.navbar input#volume-input {
+  grid-area: volume-sel;
+}
+
+.navbar label[for="select-chord-voicing"] {
+  grid-area: chord-voicing-lbl;
+}
+.navbar select#select-chord-voicing {
+  grid-area: chord-voicing-sel;
+}
